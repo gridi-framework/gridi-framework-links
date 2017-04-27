@@ -1,0 +1,43 @@
+a, .link {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    outline: 0;
+    background-color: transparent;
+    text-decoration: none;
+    color: $a-color;
+    -webkit-tap-highlight-color: transparent;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: $underline-elements-line-bottom;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: $underline-elements-line-size;
+        margin: 0 auto;
+        background: $a-color;
+        @include transition(all 0.3s ease);
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+        outline: 0;
+    }
+
+    &:hover, &:focus {
+        color: $a-hover-color;
+
+        &:after {
+            width: 30%;
+            background: $a-hover-color;
+        }
+    }
+
+    * {
+        cursor: pointer;
+    }
+}
