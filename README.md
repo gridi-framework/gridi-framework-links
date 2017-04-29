@@ -1,7 +1,7 @@
 # Gridi Framework Links
 
 ## Install
-`brew install gridi-framework-links`
+`bower install gridi-framework-links`
 
 ## Licence
 
