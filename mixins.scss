@@ -2,16 +2,8 @@
     a, .link {
         color: $color;
 
-        &:after {
-            background: $color;
-        }
-
         &:hover, &:focus {
             color: $hover-color;
-
-            &:after {
-                background: $hover-color;
-            }
         }
     }
 }
