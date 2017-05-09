@@ -5,6 +5,7 @@
     text-decoration: underline;
     color: $a-color;
     -webkit-tap-highlight-color: transparent;
+    @include transition($a-transition);
 
     &:active,
     &:focus,
