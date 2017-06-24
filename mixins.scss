@@ -1,11 +1,11 @@
 @mixin links-style() {
-    a, .#{$link-class-prefix} {
+    a {
         @content;
     }
 }
 
 @mixin class-links-style($class) {
-    a, .#{$link-class-prefix} {
+    a {
         &.#{$class} {
             @content;
         }
