@@ -12,22 +12,26 @@
     }
 }
 
-@mixin include-links-colors($color, $hover-color) {
-    color: $color;
+@mixin include-links-colors($colors-map) {
+    @if map-has-key($colors-map, color) and map-get($colors-map, color) {
+        color: map-get($colors-map, color);
+    }
 
-    &:hover, &:focus {
-        color: $hover-color;
+    @if map-has-key($colors-map, hover-color) and map-get($colors-map, hover-color) {
+        &:hover, &:focus {
+            color: map-get($colors-map, hover-color);
+        }
     }
 }
 
-@mixin links-colors($color, $hover-color) {
+@mixin links-colors($colors-map) {
     @include links-style() {
-        @include include-links-colors($color, $hover-color);
+        @include include-links-colors($colors-map);
     }
 }
 
-@mixin class-links-colors($class, $color, $hover-color) {
+@mixin class-links-colors($class, $colors-map) {
     @include class-links-style($class) {
-        @include include-links-colors($color, $hover-color);
+        @include include-links-colors($colors-map);
     }
 }
