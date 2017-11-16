@@ -1,3 +1,75 @@
+//Cursor
+$a-cursor: pointer !default;
+
+//Outline
+$a-outline-width: 0 !default;
+$a-outline-style: null !default;
+$a-outline-color: null !default;
+
+//Background
+$a-background-image: null !default;
+$a-background-position: null !default;
+$a-background-repeat: null !default;
+$a-background-color: transparent !default;
+$a-background-attachment: null !default;
+
+//Text decoration
+$a-text-decoration-line: underline !default;
+$a-text-decoration-style: null !default;
+$a-text-decoration-color: null !default;
+
+//Tab highlight color
+$a-webkit-tap-highlight-color: transparent !default;
+
+//Color
 $a-color: $primary-color !default;
+
+//Transition
+$a-transition-property: color !default;
+$a-transition-duration: $elements-transition-duration !default;
+$a-transition-timing-function: $elements-transition-function !default;
+$a-transition-delay: null !default;
+
+//Extra style
+@mixin a-extra-style() {}
+
+//Link Visited Active Hover Focus
+@mixin a-link-visited-active-hover-focus-extra-style() {}
+
+//Link
+$a-link-outline-width: 0 !default;
+$a-link-outline-style: null !default;
+$a-link-outline-color: null !default;
+$a-link-color: null !default;
+@mixin a-link-extra-style() {}
+
+//Visited
+$a-visited-outline-width: 0 !default;
+$a-visited-outline-style: null !default;
+$a-visited-outline-color: null !default;
+$a-visited-color: null !default;
+@mixin a-visited-extra-style() {}
+
+//Active
+$a-active-outline-width: 0 !default;
+$a-active-outline-style: null !default;
+$a-active-outline-color: null !default;
+$a-active-color: null !default;
+@mixin a-active-extra-style() {}
+
+//Hover Focus
+@mixin a-hover-focus-extra-style() {}
+
+//Hover
+$a-hover-outline-width: 0 !default;
+$a-hover-outline-style: null !default;
+$a-hover-outline-color: null !default;
 $a-hover-color: $hover-primary-color !default;
-$a-transition: color #{$elements-transition-duration} #{$elements-transition-function} !default;
+@mixin a-hover-extra-style() {}
+
+//Focus
+$a-focus-outline-width: 0 !default;
+$a-focus-outline-style: null !default;
+$a-focus-outline-color: null !default;
+$a-focus-color: $hover-primary-color !default;
+@mixin a-focus-extra-style() {}

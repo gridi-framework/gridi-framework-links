@@ -1,23 +1,203 @@
 @include links-style() {
-    cursor: pointer;
-    outline: 0;
-    background: transparent;
-    text-decoration: underline;
+    cursor: $a-cursor;
+    @include outline-shorthand((
+        width: $a-outline-width,
+        style: $a-outline-style,
+        color: $a-outline-color,
+        make-shorthand: true
+    ));
+    @include background-shorthand((
+        image: $a-background-image,
+        position: $a-background-position,
+        repeat: $a-background-repeat,
+        color: $a-background-color,
+        attachment: $a-background-attachment,
+        make-shorthand: true
+    ));
+    @include text-decoration-shorthand((
+        line: $a-text-decoration-line,
+        style: $a-text-decoration-style,
+        color: $a-text-decoration-color,
+        make-shorthand: true
+    ));
     color: $a-color;
-    -webkit-tap-highlight-color: transparent;
-    @include transition($a-transition);
+    @include not-required-property(-webkit-tap-highlight-color, $a-webkit-tap-highlight-color);
+    @include transition-shorthand((
+        property: $a-transition-property,
+        duration: $a-transition-duration,
+        timing-function: $a-transition-timing-function,
+        delay: $a-transition-delay,
+        make-shorthand: true
+    ));
+    @include a-extra-style();
 
+    &:link,
+    &:visited,
     &:active,
     &:focus,
     &:hover {
-        outline: 0;
+        @if (
+            $a-link-outline-width == $a-visited-outline-width and $a-visited-outline-width == $a-active-outline-width and $a-active-outline-width == $a-hover-outline-width and $a-hover-outline-width == $a-focus-outline-width and
+            $a-link-outline-style == $a-visited-outline-style and $a-visited-outline-style == $a-active-outline-style and $a-active-outline-style == $a-hover-outline-style and $a-hover-outline-style == $a-focus-outline-style and
+            $a-link-outline-color == $a-visited-outline-color and $a-visited-outline-color == $a-active-outline-color and $a-active-outline-color == $a-hover-outline-color and $a-hover-outline-color == $a-focus-outline-color
+        ) {
+            @include outline-shorthand((
+                width: $a-link-outline-width,
+                style: $a-link-outline-style,
+                color: $a-link-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if $a-link-color == $a-visited-color and $a-visited-color == $a-active-color and $a-active-color == $a-hover-color and $a-hover-color == $a-focus-color {
+            color: $a-link-color;
+        }
+        @include a-link-visited-active-hover-focus-extra-style();
     }
 
     &:hover, &:focus {
-        color: $a-hover-color;
+        @if ((
+                $a-hover-outline-width != $a-link-outline-width or $a-hover-outline-width != $a-visited-outline-width or $a-hover-outline-width != $a-active-outline-width or
+                $a-hover-outline-style != $a-link-outline-style or $a-hover-outline-style != $a-visited-outline-style or $a-hover-outline-style != $a-active-outline-style or
+                $a-hover-outline-color != $a-link-outline-color or $a-hover-outline-color != $a-visited-outline-color or $a-hover-outline-color != $a-active-outline-color or
+                $a-focus-outline-width != $a-link-outline-width or $a-focus-outline-width != $a-visited-outline-width or $a-focus-outline-width != $a-active-outline-width or
+                $a-focus-outline-style != $a-link-outline-style or $a-focus-outline-style != $a-visited-outline-style or $a-focus-outline-style != $a-active-outline-style or
+                $a-focus-outline-color != $a-link-outline-color or $a-focus-outline-color != $a-visited-outline-color or $a-focus-outline-color != $a-active-outline-color 
+            ) and (
+                $a-hover-outline-width == $a-focus-outline-width and
+                $a-hover-outline-style == $a-focus-outline-style and
+                $a-hover-outline-color == $a-focus-outline-color
+            )
+        ) {
+            @include outline-shorthand((
+                width: $a-hover-outline-width,
+                style: $a-hover-outline-style,
+                color: $a-hover-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if ((
+            $a-hover-color != $a-link-color or $a-hover-color != $a-visited-color or $a-hover-color == $a-active-color or
+            $a-focus-color != $a-link-color or $a-focus-color != $a-visited-color or $a-focus-color == $a-active-color
+         ) and $a-hover-color == $a-focus-color) {
+            color: $a-hover-color;
+        }
+        @include a-hover-focus-extra-style();
+    }
+
+    &:link {
+        @if (
+            $a-link-outline-width != $a-visited-outline-width or $a-link-outline-width != $a-active-outline-width or $a-link-outline-width != $a-hover-outline-width or $a-link-outline-width != $a-focus-outline-width or
+            $a-link-outline-style != $a-visited-outline-style or $a-link-outline-style != $a-active-outline-style or $a-link-outline-style != $a-hover-outline-style or $a-link-outline-width != $a-focus-outline-width or
+            $a-link-outline-color != $a-visited-outline-color or $a-link-outline-color != $a-active-outline-color or $a-link-outline-color != $a-hover-outline-color or $a-link-outline-width != $a-focus-outline-width
+        ) {
+            @include outline-shorthand((
+                width: $a-link-outline-width,
+                style: $a-link-outline-style,
+                color: $a-link-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if (
+            $a-link-color != $a-visited-color or $a-link-color != $a-active-color or $a-link-color != $a-hover-color or $a-link-color != $a-focus-color
+        ) {
+            color: $a-link-color;
+        }
+        @include a-link-extra-style();
+    }
+
+    &:visited {
+        @if (
+            $a-visited-outline-width != $a-link-outline-width or $a-visited-outline-width != $a-active-outline-width or $a-visited-outline-width != $a-hover-outline-width or $a-visited-outline-width != $a-focus-outline-width or
+            $a-visited-outline-style != $a-link-outline-style or $a-visited-outline-style != $a-active-outline-style or $a-visited-outline-style != $a-hover-outline-style or $a-visited-outline-width != $a-focus-outline-width or
+            $a-visited-outline-color != $a-link-outline-color or $a-visited-outline-color != $a-active-outline-color or $a-visited-outline-color != $a-hover-outline-color or $a-visited-outline-width != $a-focus-outline-width
+        ) {
+            @include outline-shorthand((
+                width: $a-visited-outline-width,
+                style: $a-visited-outline-style,
+                color: $a-visited-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if (
+            $a-visited-color != $a-link-color or $a-visited-color != $a-active-color or $a-visited-color != $a-hover-color or $a-visited-color != $a-focus-color
+        ) {
+            color: $a-visited-color;
+        }
+        @include a-visited-extra-style();
+    }
+
+    &:active {
+        @if (
+            $a-active-outline-width != $a-link-outline-width or $a-active-outline-width != $a-visited-outline-width or $a-active-outline-width != $a-hover-outline-width or $a-active-outline-width != $a-focus-outline-width or
+            $a-active-outline-style != $a-link-outline-style or $a-active-outline-style != $a-visited-outline-style or $a-active-outline-style != $a-hover-outline-style or $a-active-outline-width != $a-focus-outline-width or
+            $a-active-outline-color != $a-link-outline-color or $a-active-outline-color != $a-visited-outline-color or $a-active-outline-color != $a-hover-outline-color or $a-active-outline-width != $a-focus-outline-width
+        ) {
+            @include outline-shorthand((
+                width: $a-active-outline-width,
+                style: $a-active-outline-style,
+                color: $a-active-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if (
+            $a-active-color != $a-link-color or $a-active-color != $a-visited-color or $a-active-color != $a-hover-color or $a-active-color != $a-focus-color
+        ) {
+            color: $a-active-color;
+        }
+        @include a-active-extra-style();
+    }
+
+    &:hover {
+        @if (
+            ($a-hover-outline-width != $a-link-outline-width or $a-hover-outline-width != $a-visited-outline-width or $a-hover-outline-width != $a-active-outline-width) and
+            $a-hover-outline-width != $a-focus-outline-width and
+            ($a-hover-outline-style != $a-link-outline-style or $a-hover-outline-style != $a-visited-outline-style or $a-hover-outline-style != $a-active-outline-style) and
+            $a-hover-outline-width != $a-focus-outline-width and
+            ($a-hover-outline-color != $a-link-outline-color or $a-hover-outline-color != $a-visited-outline-color or $a-hover-outline-color != $a-active-outline-color) and
+            $a-hover-outline-width != $a-focus-outline-width
+        ) {
+            @include outline-shorthand((
+                width: $a-hover-outline-width,
+                style: $a-hover-outline-style,
+                color: $a-hover-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if (
+            ($a-hover-color != $a-link-color or $a-hover-color != $a-visited-color or $a-hover-color != $a-active-color) and
+            $a-hover-color != $a-focus-color
+        ) {
+            color: $a-hover-color;
+        }
+        @include a-hover-extra-style();
+    }
+
+    &:focus {
+        @if (
+            ($a-focus-outline-width != $a-link-outline-width or $a-focus-outline-width != $a-visited-outline-width or $a-focus-outline-width != $a-active-outline-width) and
+            $a-focus-outline-width != $a-hover-outline-width and
+            ($a-focus-outline-style != $a-link-outline-style or $a-focus-outline-style != $a-visited-outline-style or $a-focus-outline-style != $a-active-outline-style) and
+            $a-focus-outline-width != $a-hover-outline-width and
+            ($a-focus-outline-color != $a-link-outline-color or $a-focus-outline-color != $a-visited-outline-color or $a-focus-outline-color != $a-active-outline-color) and
+            $a-focus-outline-width != $a-hover-outline-width
+        ) {
+            @include outline-shorthand((
+                width: $a-focus-outline-width,
+                style: $a-focus-outline-style,
+                color: $a-focus-outline-color,
+                make-shorthand: true
+            ));
+        }
+        @if (
+            ($a-focus-color != $a-link-color or $a-focus-color != $a-visited-color or $a-focus-color != $a-active-color) and
+            $a-focus-color != $a-hover-color
+        ) {
+            color: $a-focus-color;
+        }
+        @include a-focus-extra-style();
     }
 
     * {
-        cursor: pointer;
+        cursor: $a-cursor;
     }
 }
