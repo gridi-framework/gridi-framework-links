@@ -12,20 +12,22 @@
     }
 }
 
-@mixin links-extra-colors-propertys($colors-map) {}
-@mixin links-link-visited-active-hover-focus-extra-colors-propertys($colors-map) {}
-@mixin links-hover-focus-extra-colors-propertys($colors-map) {}
-@mixin links-link-extra-colors-propertys($colors-map) {}
-@mixin links-visited-extra-colors-propertys($colors-map) {}
-@mixin links-active-extra-colors-propertys($colors-map) {}
-@mixin links-hover-extra-colors-propertys($colors-map) {}
-@mixin links-focus-extra-colors-propertys($colors-map) {}
+//@mixin links-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-link-visited-active-hover-focus-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-hover-focus-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-link-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-visited-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-active-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-hover-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
+//@mixin links-focus-extra-colors-propertys($colors-map) {} //Create this mixin before import module when you want add some special colors style for element
 
 @mixin links-colors-propertys($colors-map) {
     @if is-map($colors-map) {
         @include property-from-map($colors-map, outline-color);
         @include property-from-map($colors-map, color);
-        @include links-extra-colors-propertys($colors-map);
+        @if mixin-exists(links-extra-colors-propertys) {
+            @include links-extra-colors-propertys($colors-map);
+        }
 
         $a-link-outline-color: map-get($colors-map, link-outline-color);
         $a-link-color: map-get($colors-map, link-color);
@@ -63,7 +65,9 @@
             ) {
                 @include not-required-property(color, $a-link-color);
             }
-            @include links-link-visited-active-hover-focus-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-link-visited-active-hover-focus-extra-colors-propertys) {
+                @include links-link-visited-active-hover-focus-extra-colors-propertys($colors-map);
+            }
         }
 
         &hover, &:focus {
@@ -84,7 +88,9 @@
              ) and $a-hover-color == $a-focus-color) {
                 @include not-required-property(color, $a-hover-color);
             }
-            @include links-hover-focus-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-hover-focus-extra-colors-propertys) {
+                @include links-hover-focus-extra-colors-propertys($colors-map);
+            }
         }
 
         &:link {
@@ -94,7 +100,9 @@
             @if ($a-link-color != $a-visited-color or $a-link-color != $a-active-color or $a-link-color != $a-hover-color or $a-link-color != $a-focus-color) {
                 @include not-required-property(color, $a-link-color);
             }
-            @include links-link-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-link-extra-colors-propertys) {
+                @include links-link-extra-colors-propertys($colors-map);
+            }
         }
 
         &:visited {
@@ -104,7 +112,9 @@
             @if ($a-visited-color != $a-link-color or $a-visited-color != $a-active-color or $a-visited-color != $a-hover-color or $a-visited-color != $a-focus-color) {
                 @include not-required-property(color, $a-visited-color);
             }
-            @include links-visited-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-visited-extra-colors-propertys) {
+                @include links-visited-extra-colors-propertys($colors-map);
+            }
         }
 
         &:active {
@@ -114,7 +124,9 @@
             @if ($a-active-color != $a-link-color or $a-active-color != $a-visited-color or $a-active-color != $a-hover-color or $a-active-color != $a-focus-color) {
                 @include not-required-property(color, $a-active-color);
             }
-            @include links-active-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-active-extra-colors-propertys) {
+                @include links-active-extra-colors-propertys($colors-map);
+            }
         }
 
         &:hover {
@@ -124,7 +136,9 @@
             @if ($a-hover-color != $a-link-color or $a-hover-color != $a-visited-color or $a-hover-color != $a-active-color or $a-hover-color != $a-focus-color) {
                 @include not-required-property(color, $a-hover-color);
             }
-            @include links-hover-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-hover-extra-colors-propertys) {
+                @include links-hover-extra-colors-propertys($colors-map);
+            }
         }
 
         &:focus {
@@ -134,7 +148,9 @@
             @if ($a-focus-color != $a-link-color or $a-focus-color != $a-visited-color or $a-focus-color != $a-active-color or $a-focus-color != $a-hover-color) {
                 @include not-required-property(color, $a-focus-color);
             }
-            @include links-focus-extra-colors-propertys($colors-map);
+            @if mixin-exists(links-focus-extra-colors-propertys) {
+                @include links-focus-extra-colors-propertys($colors-map);
+            }
         }
     }
 }

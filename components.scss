@@ -29,7 +29,9 @@
         delay: $a-transition-delay,
         make-shorthand: true
     ));
-    @include a-extra-style();
+    @if mixin-exists(a-extra-style) {
+        @include a-extra-style();
+    }
 
     &:link,
     &:visited,
@@ -51,7 +53,9 @@
         @if $a-link-color == $a-visited-color and $a-visited-color == $a-active-color and $a-active-color == $a-hover-color and $a-hover-color == $a-focus-color {
             color: $a-link-color;
         }
-        @include a-link-visited-active-hover-focus-extra-style();
+        @if mixin-exists(a-link-visited-active-hover-focus-extra-style) {
+            @include a-link-visited-active-hover-focus-extra-style();
+        }
     }
 
     &:hover, &:focus {
@@ -81,7 +85,9 @@
          ) and $a-hover-color == $a-focus-color) {
             color: $a-hover-color;
         }
-        @include a-hover-focus-extra-style();
+        @if mixin-exists(a-hover-focus-extra-style) {
+            @include a-hover-focus-extra-style();
+        }
     }
 
     &:link {
@@ -102,7 +108,9 @@
         ) {
             color: $a-link-color;
         }
-        @include a-link-extra-style();
+        @if mixin-exists(a-link-extra-style) {
+            @include a-link-extra-style();
+        }
     }
 
     &:visited {
@@ -123,7 +131,9 @@
         ) {
             color: $a-visited-color;
         }
-        @include a-visited-extra-style();
+        @if mixin-exists(a-visited-extra-style) {
+            @include a-visited-extra-style();
+        }
     }
 
     &:active {
@@ -144,7 +154,9 @@
         ) {
             color: $a-active-color;
         }
-        @include a-active-extra-style();
+        @if mixin-exists(a-active-extra-style) {
+            @include a-active-extra-style();
+        }
     }
 
     &:hover {
@@ -169,7 +181,9 @@
         ) {
             color: $a-hover-color;
         }
-        @include a-hover-extra-style();
+        @if mixin-exists(a-hover-extra-style) {
+            @include a-hover-extra-style();
+        }
     }
 
     &:focus {
@@ -194,7 +208,9 @@
         ) {
             color: $a-focus-color;
         }
-        @include a-focus-extra-style();
+        @if mixin-exists(a-focus-extra-style) {
+            @include a-focus-extra-style();
+        }
     }
 
     * {
