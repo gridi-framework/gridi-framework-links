@@ -70,7 +70,7 @@
             }
         }
 
-        &hover, &:focus {
+        &:hover, &:focus {
             @if ((
                     $a-hover-outline-color != $a-link-outline-color or
                     $a-hover-outline-color != $a-visited-outline-color or
@@ -94,7 +94,7 @@
         }
 
         &:link {
-            @if ($a-link-outline-color != $a-visited-outline-color or $a-link-outline-color != $a-active-outline-color or $a-link-outline-color != $a-hover-outline-color or $a-link-outline-width != $a-focus-outline-width) {
+            @if ($a-link-outline-color != $a-visited-outline-color or $a-link-outline-color != $a-active-outline-color or $a-link-outline-color != $a-hover-outline-color or $a-link-outline-color != $a-focus-outline-color) {
                 @include not-required-property(outline-color, $a-link-outline-color);
             }
             @if ($a-link-color != $a-visited-color or $a-link-color != $a-active-color or $a-link-color != $a-hover-color or $a-link-color != $a-focus-color) {
@@ -106,7 +106,7 @@
         }
 
         &:visited {
-            @if ($a-visited-outline-color != $a-link-outline-color or $a-visited-outline-color != $a-active-outline-color or $a-visited-outline-color != $a-hover-outline-color or $a-visited-outline-width != $a-focus-outline-width) {
+            @if ($a-visited-outline-color != $a-link-outline-color or $a-visited-outline-color != $a-active-outline-color or $a-visited-outline-color != $a-hover-outline-color or $a-visited-outline-color != $a-focus-outline-color) {
                 @include not-required-property(outline-color, $a-visited-outline-color);
             }
             @if ($a-visited-color != $a-link-color or $a-visited-color != $a-active-color or $a-visited-color != $a-hover-color or $a-visited-color != $a-focus-color) {
@@ -118,7 +118,7 @@
         }
 
         &:active {
-            @if ($a-active-outline-color != $a-link-outline-color or $a-active-outline-color != $a-visited-outline-color or $a-active-outline-color != $a-hover-outline-color or $a-active-outline-width != $a-focus-outline-width) {
+            @if ($a-active-outline-color != $a-link-outline-color or $a-active-outline-color != $a-visited-outline-color or $a-active-outline-color != $a-hover-outline-color or $a-active-outline-color != $a-focus-outline-color) {
                 @include not-required-property(outline-color, $a-active-outline-color);
             }
             @if ($a-active-color != $a-link-color or $a-active-color != $a-visited-color or $a-active-color != $a-hover-color or $a-active-color != $a-focus-color) {
@@ -130,10 +130,10 @@
         }
 
         &:hover {
-            @if ($a-hover-outline-color != $a-link-outline-color or $a-hover-outline-color != $a-visited-outline-color or $a-hover-outline-color != $a-active-outline-color or $a-hover-outline-width != $a-focus-outline-width) {
+            @if (($a-hover-outline-color != $a-link-outline-color or $a-hover-outline-color != $a-visited-outline-color or $a-hover-outline-color != $a-active-outline-color) and $a-hover-outline-color != $a-focus-outline-color) {
                 @include not-required-property(outline-color, $a-hover-outline-color);
             }
-            @if ($a-hover-color != $a-link-color or $a-hover-color != $a-visited-color or $a-hover-color != $a-active-color or $a-hover-color != $a-focus-color) {
+            @if (($a-hover-color != $a-link-color or $a-hover-color != $a-visited-color or $a-hover-color != $a-active-color) and $a-hover-color != $a-focus-color) {
                 @include not-required-property(color, $a-hover-color);
             }
             @if mixin-exists(links-hover-extra-colors-propertys) {
@@ -142,10 +142,10 @@
         }
 
         &:focus {
-            @if ($a-focus-outline-color != $a-link-outline-color or $a-focus-outline-color != $a-visited-outline-color or $a-focus-outline-color != $a-active-outline-color or $a-focus-outline-width != $a-hover-outline-width) {
+            @if (($a-focus-outline-color != $a-link-outline-color or $a-focus-outline-color != $a-visited-outline-color or $a-focus-outline-color != $a-active-outline-color) and $a-focus-outline-color != $a-hover-outline-color) {
                 @include not-required-property(outline-color, $a-focus-outline-color);
             }
-            @if ($a-focus-color != $a-link-color or $a-focus-color != $a-visited-color or $a-focus-color != $a-active-color or $a-focus-color != $a-hover-color) {
+            @if (($a-focus-color != $a-link-color or $a-focus-color != $a-visited-color or $a-focus-color != $a-active-color) and $a-focus-color != $a-hover-color) {
                 @include not-required-property(color, $a-focus-color);
             }
             @if mixin-exists(links-focus-extra-colors-propertys) {
